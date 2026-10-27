@@ -1,6 +1,0 @@
-{
-  "name": "certifyx-js",
-  "private": true,
-  "type": "module",
-  "description": "Certifyx application with JavaScript Supabase Edge Functions"
-}
