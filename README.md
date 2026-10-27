@@ -37,8 +37,8 @@ CertifyX is a web-based certificate management system designed for educational i
 - **Database:** Supabase / PostgreSQL
 - **File Storage & Integration:** Google Drive API
 - **Reporting:** Google Sheets API
-- **Hosting:** Vercel or another static-site hosting provider
-- **Testing:** Node.js tests and Python-based checks
+- **Hosting:** Vercel
+
 
 ## 📁 Project Structure
 
