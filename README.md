@@ -1,3 +1,166 @@
+# CertifyX — Certificate Management & Verification
+
+CertifyX is a web-based certificate management system designed for educational institutions. It helps students submit certificates online and enables faculty to manage submissions, track requirements, and verify certificates.
+
+## 🚀 Features
+
+### Student Portal
+- Sign in using a roll number and private access code.
+- Upload certificates in PDF or image format.
+- Submit certificate details, including title, type, authority, and date.
+- Track required certificate submissions.
+- Access public verification links for approved certificates.
+
+### Admin & Faculty Dashboard
+- Google sign-in for authorized faculty.
+- Import and manage student records.
+- Generate student access codes.
+- Review, approve, reject, and manage submissions.
+- Organize certificate types and submission deadlines.
+- Export records and monitor completion status.
+- Connect Google Drive and Google Sheets.
+- Synchronize certificate records and send reminders.
+
+### Certificate Verification
+- Generate shareable verification links.
+- Display verification status for approved student records.
+- Protect student privacy by masking identifying information.
+
+### Progressive Web App (PWA)
+- Installable on supported desktop and mobile devices.
+- Includes a web app manifest and service worker.
+
+## 🛠️ Technology Stack
+
+- **Frontend:** HTML, CSS, JavaScript
+- **Backend:** Supabase Edge Functions
+- **Database:** Supabase / PostgreSQL
+- **File Storage & Integration:** Google Drive API
+- **Reporting:** Google Sheets API
+- **Hosting:** Vercel or another static-site hosting provider
+- **Testing:** Node.js tests and Python-based checks
+
+## 📁 Project Structure
+
+```text
+certifyx/
+├── index.html
+├── app.js
+├── config.js
+├── styles.css
+├── check.html
+├── verify.html
+├── manifest.webmanifest
+├── sw.js
+├── icons/
+├── supabase/
+│   ├── config.toml
+│   ├── schema.sql
+│   ├── seed.sql
+│   └── functions/
+├── tests/
+├── package.json
+├── run-tests.sh
+└── README.md
+```
+
+## ⚙️ Setup Instructions
+
+### 1. Clone the repository
+
+```bash
+git clone https://github.com/25A31A05GB/certifyx.git
+cd certifyx
+```
+
+### 2. Configure Supabase
+
+1. Create a Supabase project.
+2. Open the SQL Editor.
+3. Run `supabase/schema.sql`.
+4. Run `supabase/seed.sql`.
+5. Enable Google authentication for authorized administrators.
+6. Configure the site's URL and authentication redirect settings.
+
+### 3. Configure the application
+
+Update `config.js` with your Supabase project URL and public anonymous key.
+
+**Security:** Never commit service-role keys, Google client secrets, encryption keys, or other private credentials to GitHub.
+
+### 4. Configure Google integration
+
+For Drive and Sheets integration:
+
+1. Create a project in Google Cloud Console.
+2. Enable the Google Drive API and Google Sheets API.
+3. Configure the OAuth consent screen.
+4. Create a web OAuth client.
+5. Configure the required Supabase authentication and callback URLs.
+6. Add the required credentials to Supabase secrets.
+
+### 5. Deploy Supabase functions
+
+Install the Supabase CLI, authenticate, link your project, configure the required secrets, and deploy the Edge Functions listed in `supabase/config.toml` and the project setup guide.
+
+### 6. Deploy the website
+
+Import the repository into Vercel.
+
+Recommended settings for the current static frontend:
+
+- **Framework Preset:** Other
+- **Root Directory:** Repository root
+- **Build Command:** Leave blank
+- **Output Directory:** `.` or the repository root, according to the Vercel configuration
+
+Deploy the project and open the generated website URL.
+
+After deployment, visit `/check.html` to help diagnose configuration and integration problems.
+
+## 🧪 Testing
+
+Run the project's test script:
+
+```bash
+sh run-tests.sh
+```
+
+You can also run selected checks separately:
+
+```bash
+node --test tests/core.test.mjs tests/student.test.mjs
+python3 tests/lint_schema.py
+```
+
+Live integrations must be tested separately using a properly configured Supabase project and Google OAuth credentials.
+
+## 🔐 Security
+
+- Student access uses private access codes.
+- Repeated incorrect access attempts are rate-limited through account lockout logic.
+- Student API requests are authenticated by the backend.
+- Google integration is managed through authorized administrator credentials.
+- Public verification pages limit the student information displayed.
+
+Keep all production credentials private and test the complete workflow before using real student records.
+
+## 📌 Important Notes
+
+- Supabase and Google integrations require separate configuration.
+- A successful frontend deployment does not automatically configure the backend.
+- Test uploads, verification, authentication, and synchronization in a staging environment before production use.
+- Review the project documentation for known limitations and integration testing requirements.
+
+## 👨‍💻 Repository
+
+GitHub: https://github.com/sappaparvathi24-star/certifyx
+
+Live deployment: https://certifyx-fawn.vercel.app
+
+---
+
+**CertifyX — Simplifying Certificate Submission, Management, and Verification.**
 # Certifyx — setup guide
 
 Two sides, one backend:
